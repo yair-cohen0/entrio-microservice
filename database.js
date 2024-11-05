@@ -22,22 +22,19 @@ const repositorySchema = new mongoose.Schema({
     numberOfForks: Number,
     languages: String,
     topics: [String],
-}, { timestamps: true });
+}, {timestamps: true});
 
 const Repository = mongoose.model('repositories', repositorySchema);
 
-export const getAllRepositories = async () => {
-    const repos = await Repository.find({});
-    return repos;
+export const getAllRepositories = () => {
+    return Repository.find({});
 }
 
-export const getRepositoryById = async (repoId) => {
-    const repo = await Repository.findOne({ repoId });
-    return repo;
+export const getRepositoryById = (repoId) => {
+    return Repository.findOne({repoId});
 }
 
-export const getRepositoryByName = async (name) => {
-    const repo = await Repository.findOne({ name });
-    return repo;
+export const getRepositoryByName = (name) => {
+    return Repository.findOne({name});
 }
 
