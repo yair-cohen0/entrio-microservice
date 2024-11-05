@@ -1,9 +1,14 @@
 import express from 'express'
 import {getAllRepositories, getRepositoryById, getRepositoryByName} from "./database.js";
 import {fetchRepositoryByName} from "./dataCollectionApi.js";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.port || 3000;
+
+app.use(cors({
+    origin: '*'
+}))
 
 app.get('/', async (req, res) => {
     res.status(200).send(await getAllRepositories());
@@ -21,7 +26,7 @@ app.get('/:value', async (req, res) => {
         if (!repo) {
             try {
                 console.log(`Fetching repository "${value}" from external API...`)
-                res.status(200).send(fetchRepositoryByName(value));
+                res.status(200).send(await fetchRepositoryByName(value));
                 return;
             } catch (e) {
                 res.status(500).send(e.message);
