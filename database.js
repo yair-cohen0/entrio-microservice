@@ -27,7 +27,7 @@ const repositorySchema = new mongoose.Schema({
 const Repository = mongoose.model('repositories', repositorySchema);
 
 export const getAllRepositories = () => {
-    return Repository.find({}, {name: 1, id: 1});
+    return Repository.find({}, {name: 1, repoId: 1, _id: 0});
 }
 
 export const getRepositoryById = (repoId) => {
