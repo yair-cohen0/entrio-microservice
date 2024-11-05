@@ -2,10 +2,15 @@
   "name": "microservice",
   "version": "1.0.0",
   "description": "API to access repositories ",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "node -r dotenv/config --watch index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.8.0"
+  }
 }
